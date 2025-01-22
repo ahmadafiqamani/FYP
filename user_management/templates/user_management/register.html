@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="login">
+        <form method="POST" action="" class="login__form">
+            {% csrf_token %}
+            <h1 class="login__title">Register</h1>
+
+            <div class="login__inputs">
+                <div class="login__box">
+                    <input type="text" name="username" placeholder="Username" required class="login__input">
+                </div>
+                <div class="login__box">
+                    <input type="email" name="email" placeholder="Email" required class="login__input">
+                </div>
+                <div class="login__box">
+                    <input type="password" name="password1" placeholder="Password" required class="login__input">
+                </div>
+                <div class="login__box">
+                    <input type="password" name="password2" placeholder="Confirm Password" required class="login__input">
+                </div>
+            </div>
+            <div class="login__box">
+                <select name="role" placeholder="Select Role" required class="login__input">
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="basic">Basic</option>
+                </select>
+            </div>
+            <button type="submit" class="login__button">Register</button>
+        </form>
+        {% if messages %}
+            <div class="login__messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
