@@ -6,11 +6,10 @@ from sensor_monitor.models import SensorReading
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.timezone import now, timedelta
 
-# Render the control panel page
 def control_panel(request):
     return render(request, "actuator_control/control_panel.html")
 
-# Fetch the current actuator state
+#fetch current actuator state
 def get_actuator_state(request, node):
     try:
         state = ActuatorState.objects.get(node=node)
@@ -23,7 +22,7 @@ def get_actuator_state(request, node):
     except ActuatorState.DoesNotExist:
         return JsonResponse({"error": "Node not found"}, status=404)
 
-# Update actuator state (manual override)
+#update actuator state (manual override)
 @csrf_exempt
 def update_actuator_state(request, node):
     if request.method == "POST":
@@ -38,7 +37,6 @@ def update_actuator_state(request, node):
             return JsonResponse({"error": "Node not found"}, status=404)
     return JsonResponse({"error": "Invalid request method"}, status=400)
 
-# Automated actuator state updates based on sensor readings
 def update_actuators_from_sensors():
     nodes = {"F": ["flame", "smokeB"], "G": ["motion", "smokeC"]}
     thresholds = {"flame": 50, "smokeB": 200, "smokeC": 200, "motion": 1}
@@ -60,18 +58,17 @@ def update_actuators_from_sensors():
 from .gpio_controller import turn_on_led, turn_off_led, activate_buzzer, deactivate_buzzer
 
 def control_actuators(request):
-    # Get sensor readings from the database or request (as an example)
-    flame_detected = True  # Example: Replace with actual logic from your app
-    smoke_detected = False  # Example: Replace with actual logic from your app
+    flame_detected = True
+    smoke_detected = False
 
-    # Control LEDs based on sensor readings
+    #LED control
     if flame_detected or smoke_detected:
-        turn_on_led(RED_LED_PIN)  # Turn on Red LED if danger
-        turn_off_led(GREEN_LED_PIN)  # Turn off Green LED
-        activate_buzzer()  # Activate buzzer
+        turn_on_led(RED_LED_PIN)
+        turn_off_led(GREEN_LED_PIN)
+        activate_buzzer()
     else:
-        turn_off_led(RED_LED_PIN)  # Turn off Red LED if no danger
-        turn_on_led(GREEN_LED_PIN)  # Turn on Green LED for safe zone
-        deactivate_buzzer()  # Deactivate buzzer
+        turn_off_led(RED_LED_PIN)
+        turn_on_led(GREEN_LED_PIN)
+        deactivate_buzzer()
 
     return HttpResponse("Actuators have been updated.")
