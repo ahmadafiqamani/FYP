@@ -1,0 +1,107 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb); /* Gradient Background */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login Container */
+.login {
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #333;
+}
+
+/* Title */
+.login__title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #1e3a8a; /* Tailwind Blue 900 */
+}
+
+/* Input Boxes */
+.login__inputs {
+  margin-bottom: 20px;
+}
+
+.login__box {
+  margin-bottom: 15px;
+}
+
+.login__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: #2563eb; /* Tailwind Blue 600 */
+}
+
+/* Error Message */
+.login__error {
+  color: #dc2626; /* Tailwind Red 600 */
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Login Button */
+.login__button {
+  width: 100%;
+  padding: 10px;
+  background-color: #2563eb; /* Tailwind Blue 600 */
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login__button:hover {
+  background-color: #1e40af; /* Tailwind Blue 700 */
+}
+
+/* Forgot Password Link */
+.login__forgot {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.login__forgot:hover {
+  text-decoration: underline;
+}
+
+/* Register Link */
+.login__register {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.login__link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login__link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Overview{% endblock %}</title>    
+</head>
+{% block content %}
+<body>
+    <h1>Main Page</h1>
+    <p><a href="{% url 'main_page' %}">Overview</a></p>
+    <p><a href="{% url 'sensor_monitor:sensor_data' %}">Sensor Readings</a></p>
+    <p><a href="{% url 'sensor_config:update_thresholds' %}">Update Thresholds</a></p>
+    <p><a href="{% url 'evac_pathfinding:evacuation_path' %}">Path</a></p>
+    <p><a href="{% url 'layout_display:layout_display' %}">Layout Display</a></p>
+{% endblock %}
+</body>
+</html>
