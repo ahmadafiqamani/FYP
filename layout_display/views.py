@@ -3,7 +3,7 @@ from .models import BlockedPath
 import json
 
 def layout_display(request):
-    # Graph Layout Data
+    #building as graph with distance as weights
     layout = {
         'A': {'B': 8, 'E': 12, 'F': 12},
         'B': {'A': 8, 'E': 10, 'F': 13},
@@ -13,10 +13,7 @@ def layout_display(request):
         'F': {'A': 12, 'B': 13, 'C': 9, 'D': 11, 'E': 16},
         'G': {'E': 3},
     }
-
-
-    # Get dynamically blocked paths
-    # blocked_paths = BlockedPath.objects.values_list('start', 'end')
+    
     blocked_paths = [
         ["A", "B"], ["C", "F"]
     ]
