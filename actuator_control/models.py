@@ -1,7 +1,7 @@
 from django.db import models
 
 class ActuatorState(models.Model):
-    node = models.CharField(max_length=10, unique=True)  # Node identifier, e.g., F, G
+    node = models.CharField(max_length=10, unique=True)
     red_led = models.BooleanField(default=False)
     green_led = models.BooleanField(default=False)
     buzzer = models.BooleanField(default=False)
