@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Actuator Control{%endblock%}</title>
+</head>
+<body>
+    <h1>Control Actuators</h1>
+    <button id="activate-actuators">Activate Actuators</button>
+
+    <script>
+        document.getElementById('activate-actuators').addEventListener('click', function() {
+            fetch('/actuator_control/control_panel/')
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Actuators updated', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+
+<div class="content">
+    <h1>Actuator Control Panel</h1>
+    <div id="actuator-status">
+        <!-- Dynamic actuator status will appear here -->
+    </div>
+    <hr>
+    <h2>Manual Control</h2>
+    <form id="manual-control-form">
+        <label for="node">Node:</label>
+        <select id="node" name="node">
+            <option value="F">Node F</option>
+            <option value="G">Node G</option>
+        </select>
+        <br>
+        <label>
+            <input type="checkbox" name="red_led"> Red LED
+        </label>
+        <label>
+            <input type="checkbox" name="green_led"> Green LED
+        </label>
+        <label>
+            <input type="checkbox" name="buzzer"> Buzzer
+        </label>
+        <br>
+        <button type="submit">Update Actuator State</button>
+    </form>
+</div>
+
+<script src="{% static 'js/actuator_control.js' %}"></script>
+
+<script>
+    // Connect to the WebSocket
+    const socket = new WebSocket('ws://' + window.location.host + '/ws/control_actuators/');
+
+    socket.onopen = function() {
+        console.log('WebSocket connected!');
+        socket.send(JSON.stringify({
+            'action': 'update_actuators'
+        }));
+    };
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        console.log('Sensor Data:', data);
+
+        // You can update your frontend with the sensor data, e.g., average values
+        document.getElementById("flame").textContent = "Flame Avg: " + data.flame;
+        document.getElementById("smoke").textContent = "Smoke Avg: " + data.smoke;
+        document.getElementById("temperature").textContent = "Temperature Avg: " + data.temperature;
+    };
+
+    socket.onclose = function() {
+        console.log('WebSocket connection closed');
+    };
+</script>
+<body>
+    <h1>Actuator Control</h1>
+    <div>
+        <p id="flame">Flame Avg: </p>
+        <p id="smoke">Smoke Avg: </p>
+        <p id="temperature">Temperature Avg: </p>
+    </div>
+</body>
+</html>
+{%endblock%}
+
+
