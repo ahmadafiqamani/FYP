@@ -8,10 +8,10 @@ const char* ssid = "YOUR WIFI SSID";
 const char* password = "YOUR WIFI PASSWORD";
 
 //mqtt server credentials
-const char* mqttServer = "ADDRESS OF MQTT SERVER";
+const char* mqttServer = "YOUR MQTT SERVER ADDRESS";
 const int mqttPort = 1883;
-const char* mqttUser = "YOUR MQTT USERNAME";
-const char* mqttPassword = "YOUR MQTT PASSWORD";
+const char* mqttUser = "YOUR MQTT SERVER USERNAME";
+const char* mqttPassword = "YOUR MQTT SERVER PASSWORD";
 const char* mqttTopic = "YOUR MQTT TOPIC";
 
 WiFiClient espClient;
