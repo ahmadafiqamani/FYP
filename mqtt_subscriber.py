@@ -3,16 +3,16 @@ import json
 import mysql.connector
 
 #mqtt creds
-broker = "SERVER ADDRESS"
+broker = "YOUR MQTT SERVER ADDRESS"
 port = 1883
 username = "YOUR MQTT USERNAME"
 password = "YOUR MQTT PASSWORD"
 
 #db creds
-db_host = "DATABASE HOST"
-db_user = "DATABASE USERNAME"
-db_password = "DATABASE PASSWORD"
-db_name = "DATABASE NAME"
+db_host = "YOUR DATABASE HOST"
+db_user = "YOUR DATABASE USERNAME"
+db_password = "YOUR DATABASE PASSWORD"
+db_name = "YOUR DATABASE NAME"
 
 def connect_db():
     try:
