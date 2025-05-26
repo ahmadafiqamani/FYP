@@ -3,16 +3,16 @@ import json
 import mysql.connector
 
 #mqtt creds
-broker = "10.42.0.1"
+broker = "SERVER ADDRESS"
 port = 1883
-username = "amani_mosquitto"
-password = "password"
+username = "YOUR MQTT USERNAME"
+password = "YOUR MQTT PASSWORD"
 
 #db creds
-db_host = "localhost"
-db_user = "amani"
-db_password = "password"
-db_name = "FYP"
+db_host = "DATABASE HOST"
+db_user = "DATABASE USERNAME"
+db_password = "DATABASE PASSWORD"
+db_name = "DATABASE NAME"
 
 def connect_db():
     try:
@@ -69,6 +69,6 @@ client.username_pw_set(username, password)
 client.on_message = on_message
 
 client.connect(broker, port)
-client.subscribe("esp8266/sensors")
+client.subscribe("YOUR TOPIC")
 
 client.loop_forever()
