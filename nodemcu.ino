@@ -4,15 +4,15 @@
 dht11 DHT;
 
 //network credentials
-const char* ssid = "amani_pi_hotspot";
-const char* password = "password";
+const char* ssid = "YOUR WIFI SSID";
+const char* password = "YOUR WIFI PASSWORD";
 
 //mqtt server credentials
-const char* mqttServer = "10.42.0.1";
+const char* mqttServer = "ADDRESS OF MQTT SERVER";
 const int mqttPort = 1883;
-const char* mqttUser = "amani_mosquitto";
-const char* mqttPassword = "password";
-const char* mqttTopic = "esp8266/sensors";
+const char* mqttUser = "YOUR MQTT USERNAME";
+const char* mqttPassword = "YOUR MQTT PASSWORD";
+const char* mqttTopic = "YOUR MQTT TOPIC";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
